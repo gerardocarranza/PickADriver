@@ -6,9 +6,32 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Display View Controller-->
+        <scene sceneID="2y5-hP-MLX">
+            <objects>
+                <viewController id="K0R-nr-BHq" customClass="DisplayViewController" customModule="PickADriver" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qEM-i9-F1D">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="2mT-QW-50Z"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="cnF-1b-bll">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="TZD-9p-4Kp">
+                            <connections>
+                                <segue destination="aDF-VZ-Eyb" kind="show" identifier="DisplayToNameSegue" id="heO-Ot-edF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CFO-oA-qEe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1627" y="70"/>
+        </scene>
         <!--Names Table View Controller-->
         <scene sceneID="JFh-Al-aGb">
             <objects>
@@ -42,7 +65,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pok-Lr-0bN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="860.86956521739137" y="71.739130434782609"/>
+            <point key="canvasLocation" x="2452" y="72"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="S5Z-Ki-Mkt">
@@ -55,12 +78,132 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="aDF-VZ-Eyb" kind="relationship" relationship="rootViewController" id="6b6-cm-FEO"/>
+                        <segue destination="tsV-7c-ruP" kind="relationship" relationship="rootViewController" id="sBD-2q-aOl"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pxd-6V-6ok" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-46.376811594202906" y="71.739130434782609"/>
+        </scene>
+        <!--Select a Period-->
+        <scene sceneID="R9k-SV-9zc">
+            <objects>
+                <viewController id="tsV-7c-ruP" customClass="PeriodViewController" customModule="PickADriver" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="i7r-rd-45S">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="Tdw-tg-yTd">
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Euz-ZB-reE">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="71.666666666666671"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="First Period">
+                                            <color key="titleColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onPeriodButtonTapped:" destination="tsV-7c-ruP" eventType="touchUpInside" id="bUy-P6-2j0"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XMh-C7-xNX">
+                                        <rect key="frame" x="0.0" y="85.666666666666657" width="414" height="72"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="Second Period">
+                                            <color key="titleColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onPeriodButtonTapped:" destination="tsV-7c-ruP" eventType="touchUpInside" id="tB7-sW-KWM"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dvr-Uu-Ylb">
+                                        <rect key="frame" x="0.0" y="171.66666666666666" width="414" height="71.666666666666657"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="Third Period">
+                                            <color key="titleColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onPeriodButtonTapped:" destination="tsV-7c-ruP" eventType="touchUpInside" id="ATN-aB-E6J"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zS7-ew-4rR">
+                                        <rect key="frame" x="0.0" y="257.33333333333331" width="414" height="71.666666666666686"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="Fourth Period">
+                                            <color key="titleColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onPeriodButtonTapped:" destination="tsV-7c-ruP" eventType="touchUpInside" id="apr-Mt-NVc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tKZ-42-4u2">
+                                        <rect key="frame" x="0.0" y="343" width="414" height="71.666666666666686"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="Fifth Period">
+                                            <color key="titleColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onPeriodButtonTapped:" destination="tsV-7c-ruP" eventType="touchUpInside" id="J8l-wF-ocP"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHk-Dh-pqN">
+                                        <rect key="frame" x="0.0" y="428.66666666666669" width="414" height="72"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="Sixth Period">
+                                            <color key="titleColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onPeriodButtonTapped:" destination="tsV-7c-ruP" eventType="touchUpInside" id="LZ6-Uh-pfP"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ki-re-yAb">
+                                        <rect key="frame" x="0.0" y="514.66666666666663" width="414" height="71.666666666666629"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="Seventh Period">
+                                            <color key="titleColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onPeriodButtonTapped:" destination="tsV-7c-ruP" eventType="touchUpInside" id="akE-yx-CFx"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yF2-cr-FLg">
+                                        <rect key="frame" x="0.0" y="600.33333333333337" width="414" height="71.666666666666629"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <state key="normal" title="Eighth Period">
+                                            <color key="titleColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onPeriodButtonTapped:" destination="tsV-7c-ruP" eventType="touchUpInside" id="7kR-i3-GEI"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Tdw-tg-yTd" firstAttribute="leading" secondItem="6BT-aH-y0Y" secondAttribute="leading" id="5rl-ar-tsd"/>
+                            <constraint firstItem="Tdw-tg-yTd" firstAttribute="top" secondItem="6BT-aH-y0Y" secondAttribute="top" id="NVS-7w-vDU"/>
+                            <constraint firstItem="6BT-aH-y0Y" firstAttribute="bottom" secondItem="Tdw-tg-yTd" secondAttribute="bottom" id="X2Y-T1-wuM"/>
+                            <constraint firstItem="6BT-aH-y0Y" firstAttribute="trailing" secondItem="Tdw-tg-yTd" secondAttribute="trailing" id="nrF-lY-kwl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6BT-aH-y0Y"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Select a Period" id="Ycw-iI-IiF"/>
+                    <connections>
+                        <segue destination="K0R-nr-BHq" kind="show" identifier="PeriodToDisplaySegue" id="LGw-UI-xKD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hk3-oO-uF1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="811.59420289855075" y="71.739130434782609"/>
         </scene>
     </scenes>
 </document>

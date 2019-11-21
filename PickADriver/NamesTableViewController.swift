@@ -10,12 +10,28 @@ import UIKit
 
 class NamesTableViewController: UITableViewController {
 
-    var names = ["Riley", "Mason", "Jaylin", "Josh", "Gerardo", "David", "Fitzer", "Kelvin"]
+    var period = String()
+    var defaults = UserDefaults.standard
+    var names = [String]() {
+        didSet {
+            defaults.set(names, forKey: period)
+        }
+    }
+    
+    //var names = ["Riley", "Mason", "Jaylin", "Josh", "Gerardo", "David", "Fitzer", "Kelvin"]
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        defaults.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
+//        defaults.synchronize()
+        if let savedData = defaults.object(forKey: period) as? [String] {
+            names = savedData
+        } else {
+            loadTestNames()
+        }
+        tableView.isEditing = true
     }
 
 
@@ -37,50 +53,49 @@ class NamesTableViewController: UITableViewController {
     }
  
 
-    /*
+    
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
+ 
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
+            self.names.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
-    */
+ 
 
-    /*
+    
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+        let nameToMove = names.remove(at: fromIndexPath.row)
+        names.insert(nameToMove, at: to.row)
     }
-    */
+ 
 
-    /*
+ 
     // Override to support conditional rearranging of the table view.
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         return true
     }
-    */
+ 
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
+//    // MARK: - Navigation
+//
+//    // In a storyboard-based application, you will often want to do a little preparation before navigation
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        // Get the new view controller using segue.destination.
+//        // Pass the selected object to the new view controller.
+//    }
+    
 
     
     @IBAction func onPlusButtonTapped(_ sender: UIBarButtonItem) {
@@ -100,5 +115,27 @@ class NamesTableViewController: UITableViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    func loadTestNames(){
+        switch period {
+        case "First Period":
+            names = ["Steve", "Bob", "Jim"]
+        case "Second Period":
+            names = ["Shrek", "Donkey", "Fiona"]
+        case "Third Period":
+            names = ["Homer", "Lisa", "Bart"]
+        case "Fourth Period":
+            names = ["Wil", "Pedro", "Federico"]
+        case "Fifth Period":
+            names = ["Jaden", "Marcus", "Jamie"]
+        case "Sixth Period":
+            names = ["Luis", "Juan", "Angel"]
+        case "Seventh Period":
+            names = ["Pierre", "Alexandre", "Mesut"]
+        case "Eighth Period":
+            names = ["Javier", "Hector", "Fernando"]
+        default:
+            names = ["Error: Couldn't load names"]
+        }
+    }
     
 }
